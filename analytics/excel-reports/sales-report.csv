@@ -1,0 +1,3 @@
+Order ID,Customer Name,Customer Email,Product,Category,Brand,Quantity,Price,Total Amount,Payment Status,Order Status,Date
+6a3a18a0e5af6d944e5917dc,Saurav,saurav@test.com,N/A,N/A,N/A,2,1999,3998,Paid,Shipped,2026-06-23T05:24:48.080Z
+6a3a2ae76b3bc670381f4a9b,Saurav,saurav@test.com,Smart Fitness Watch,Wearables,ShopSphere Tech,1,3499,3499,Paid,Processing,2026-06-23T06:42:47.847Z
