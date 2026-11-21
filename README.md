@@ -7,7 +7,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss)
 ![Cloudinary](https://img.shields.io/badge/Images-Cloudinary-blue?style=for-the-badge&logo=cloudinary)
 
-**Live Website:** https://shop-sphere-plum.vercel.app/
+**Live Website:** https://shopsphere-mart.vercel.app/
 
 **Backend API:** https://shopsphere-r8uw.onrender.com/
 
