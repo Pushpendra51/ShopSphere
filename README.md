@@ -1,621 +1,270 @@
 # 🛒 ShopSphere — Smart E-Commerce & Business Analytics Platform
 
-![React](https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge)
-![Node.js](https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge)
-![Express](https://img.shields.io/badge/API-Express-black?style=for-the-badge)
-![MongoDB](https://img.shields.io/badge/Database-MongoDB-darkgreen?style=for-the-badge)
-![TailwindCSS](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge)
-![Analytics](https://img.shields.io/badge/Analytics-Python%20%7C%20SQL%20%7C%20Excel%20%7C%20PowerBI-orange?style=for-the-badge)
+![React](https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge&logo=react)
+![Node.js](https://img.shields.io/badge/Backend-Node.js-green?style=for-the-badge&logo=nodedotjs)
+![Express](https://img.shields.io/badge/API-Express-black?style=for-the-badge&logo=express)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB-darkgreen?style=for-the-badge&logo=mongodb)
+![Tailwind CSS](https://img.shields.io/badge/UI-TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss)
+![Cloudinary](https://img.shields.io/badge/Images-Cloudinary-blue?style=for-the-badge&logo=cloudinary)
 
-ShopSphere is a full-stack e-commerce platform built using the MERN stack with integrated business analytics.  
-It provides complete online shopping functionality along with data-driven insights using real-world Kaggle datasets.
+**Live Website:** https://shop-sphere-plum.vercel.app/
 
-This project combines:
+**Backend API:** https://shopsphere-r8uw.onrender.com/
 
-- Full Stack Development
-- Database Management
-- Authentication Systems
-- Admin Management
-- Business Analytics
-- Data Visualization
-- CSV Export Automation
-
-making it a complete real-world industry-level project.
+**GitHub Repository:** https://github.com/Pushpendra51/ShopSphere
 
 ---
 
-# 📌 Project Overview
+## 📌 Project Overview
 
-ShopSphere is designed to simulate a production-grade e-commerce system where users can:
+ShopSphere is a full-stack e-commerce and business analytics platform developed using the MERN stack (MongoDB, Express.js, React.js, and Node.js).
 
-- Register and login securely
-- Browse products
-- Search products
-- Add items to cart
-- Save products in wishlist
-- Apply discount coupons
-- Select payment methods
-- Place orders
-- Track order status
-- Write reviews
+The platform provides customers with a complete online shopping experience, including product discovery, authentication, cart and wishlist management, coupon application, checkout, order tracking, and product reviews.
 
-At the same time, admin users can:
+It also provides an administrative dashboard for managing products, customer orders, users, inventory, and business information.
 
-- Add products
-- Delete products
-- Manage customer orders
-- Export reports
+In addition to e-commerce functionality, ShopSphere includes a business analytics module that uses e-commerce datasets and data analysis techniques to generate meaningful business insights.
 
-The unique feature of this project is the **Analytics Module**, where e-commerce business data is analyzed using Kaggle datasets and transformed into actionable business insights.
+## 🎯 Project Objectives
+
+- Develop a complete full-stack e-commerce application.
+- Implement secure authentication using JWT and password hashing.
+- Provide product, inventory, order, and user management.
+- Integrate cloud-based product image uploads.
+- Implement role-based access control for administrative functionality.
+- Generate business insights through data analysis and visualization.
+- Provide a responsive and user-friendly shopping experience.
 
 ---
 
-# 🎯 Why This Project Was Built
+## 🚀 Key Features
 
-This project was built to demonstrate:
+### 👤 1. Authentication and User Management
 
-✅ End-to-end customer shopping lifecycle  
-✅ Full-stack MERN architecture  
-✅ Secure JWT authentication  
-✅ Admin product and order management  
-✅ Coupon engine implementation  
-✅ Dynamic review and rating system  
-✅ Business analytics using real-world data  
-✅ SQL + Excel + Python + Power BI integration
+- User registration and login.
+- Secure password hashing using bcrypt.
+- JWT-based authentication.
+- Protected routes.
+- Role-based authorization.
+- User profile management.
+- Forgot password and password reset functionality.
+- Last successful login tracking.
 
----
+### 🛍️ 2. Product Management
 
-# 🚀 Core Features
+- Browse available products.
+- Search products.
+- Filter products by category.
+- View detailed product information.
+- Display prices, discounts, stock, and ratings.
+- Create new products through the admin panel.
+- Edit existing product information.
+- Update product stock.
+- Delete products.
+- Upload and replace product images using Cloudinary.
 
-# 👤 Authentication System
+### 🛒 3. Shopping Cart
 
-Users can:
+- Add products to the cart.
+- Increase or decrease product quantities.
+- Remove products.
+- Calculate totals dynamically.
+- Maintain user-specific cart information.
 
-- Register account
-- Login securely
-- Logout
-- Access profile page
-- Reset forgotten password
+### ❤️ 4. Wishlist
 
-Security implemented:
+- Add products to the wishlist.
+- View saved products.
+- Remove products from the wishlist.
 
-- JWT Authentication
-- Password hashing using bcrypt
-- Protected routes
-- Role-based authorization
+### 💳 5. Checkout and Coupon Management
 
----
+- Enter shipping information.
+- Apply coupon codes.
+- Validate discounts.
+- Calculate the final order amount.
+- Select an available payment method.
+- Place orders.
 
-# 🛍 Product Management
+### 📦 6. Order Management
 
-Each product contains:
-
-- Product name
-- Description
-- Price
-- Discount price
-- Category
-- Brand
-- Stock
-- Images
-- Badge
-- Rating
-- Reviews
-
-Features:
-
-- Product listing
-- Product detail page
-- Search products
-- Category filtering
-- Product stock tracking
-
----
-
-# ❤️ Wishlist System
-
-Users can:
-
-- Add products to wishlist
-- View saved wishlist products
-- Remove products from wishlist
-
-This helps users save products for later.
-
----
-
-# 🛒 Cart System
-
-Cart supports:
-
-- Add product
-- Increase quantity
-- Decrease quantity
-- Remove item
-- Auto total calculation
-
-The cart dynamically updates the total based on quantity.
-
----
-
-# 💳 Checkout System
-
-Checkout includes:
-
-## Shipping Information
-
-Users fill:
-
-- Full Name
-- Phone Number
-- Street
-- City
-- State
-- Pincode
-- Country
-
----
-
-## Coupon System
-
-Available coupon:
-
-```text
-WELCOME10
-```
-
-Coupon features:
-
-- Validate coupon
-- Calculate discount
-- Update final amount
-
----
-
-## Payment Methods
-
-Users can select:
-
-- Cash on Delivery
-- UPI
-- Card
-- Net Banking
-
----
-
-# 📦 Order Management
-
-After placing order:
-
-Users can:
-
-- View order history
-- Track order status
-- Check payment status
+- View order history.
+- Track order status.
+- View payment status.
+- Manage customer orders through the admin dashboard.
+- Update order status.
 
 Order lifecycle:
 
-```text
-Pending → Processing → Shipped → Delivered
-```
+`Pending → Processing → Shipped → Delivered`
 
-Admin can update order status.
+### ⭐ 7. Product Review System
 
----
+- Submit product ratings.
+- Write product reviews.
+- Display customer feedback.
+- Maintain product rating information.
 
-# ⭐ Review System
+### 🛠️ 8. Admin Dashboard
 
-Users can:
+The administrative dashboard provides centralized management of the e-commerce platform.
 
-- Give product rating (1–5)
-- Write review comments
+**Dashboard Overview**
+- Total users.
+- Total products.
+- Total orders.
+- Revenue information.
+- Business performance information.
 
-The system automatically updates:
+**Manage Products**
+- Add products.
+- Edit product details.
+- Upload product images.
+- Replace existing images.
+- Manage inventory and stock.
+- Delete products.
 
-- Average rating
-- Total review count
+**Manage Orders**
+- View customer orders.
+- Update order status.
+- Monitor payment information.
 
----
+**Manage Users**
+- View registered users.
+- Search users by name, email, or phone.
+- Filter users by role.
+- View account creation information.
+- View last successful login.
+- Display user role information.
 
-# 🛠 Admin Panel
-
-Admin dashboard provides:
-
-- Product management
-- Order management
-- CSV export
-
-Admin features:
-
-## Manage Products
-- Add products
-- Delete products
-- View stock
-
-## Manage Orders
-- View customer orders
-- Update order status
-- Track payments
-
-## Export Reports
-Export sales report as CSV.
-
----
-
-# 📊 Business Analytics Module
-
-This is the unique and most important part of this project.
-
-The analytics module uses a real-world Kaggle dataset.
-
-Dataset used:
-
-```text
-Brazilian E-Commerce Public Dataset by Olist
-```
-
-This dataset includes:
-
-- Orders
-- Payments
-- Reviews
-- Products
-- Customers
-- Sellers
+**Export Reports**
+- Export sales report data in CSV format.
 
 ---
 
-# Kaggle Dataset Integration
+## 📊 Business Analytics Module
 
-Dataset files:
+ShopSphere also includes a business analytics module designed to analyze e-commerce data and generate useful business insights.
 
-```text
-olist_customers_dataset.csv
-olist_orders_dataset.csv
-olist_order_items_dataset.csv
-olist_order_payments_dataset.csv
-olist_order_reviews_dataset.csv
-olist_products_dataset.csv
-olist_sellers_dataset.csv
-product_category_name_translation.csv
-```
+### Dataset
 
-These datasets are stored in:
+The project uses the Brazilian E-Commerce Public Dataset by Olist.
 
-```text
-analytics/data/
-```
+The dataset contains information about:
 
----
+- Customers.
+- Orders.
+- Order items.
+- Payments.
+- Product information.
+- Sellers.
+- Customer reviews.
 
-# Analytics Performed
+### Analytics Performed
 
-Using Python:
+| Analysis | Purpose |
+|---|---|
+| Monthly Orders Trend | Understand order patterns over time |
+| Payment Method Analysis | Analyze payment distribution |
+| Top-Selling Products | Identify high-performing products |
+| Customer Distribution | Analyze customer distribution by state |
+| Review Analysis | Understand customer review patterns |
 
-## 1. Monthly Orders Trend
-Tracks customer order growth over time.
-
-Generated:
-```text
-monthly_orders.csv
-monthly_orders_trend.png
-```
-
----
-
-## 2. Payment Method Analysis
-Shows payment distribution.
-
-Generated:
-```text
-payment_summary.csv
-payment_summary.png
-```
-
----
-
-## 3. Top Selling Products
-Identifies top performing products.
-
-Generated:
-```text
-top_products.csv
-```
-
----
-
-## 4. Customer Distribution by State
-Shows where customers are located.
-
-Generated:
-```text
-customers_by_state.csv
-```
-
----
-
-## 5. Review Analysis
-Analyzes customer review patterns.
-
-Generated:
-```text
-review_summary.csv
-```
-
----
-
-Analytics tools used:
+### Technologies Used
 
 - Python
 - Pandas
 - Matplotlib
-- SQL
-- Excel
-- Power BI
-- Tableau
+
+The analytics module processes dataset files and generates reports and visualizations.
 
 ---
 
-# 🧑‍💻 How a New User Can Use This Website
+## 🛠️ Technology Stack
 
-## Step 1: Open Home Page
+| Layer | Technologies |
+|---|---|
+| Frontend | React.js, Vite |
+| Styling | Tailwind CSS |
+| Routing | React Router |
+| API Communication | Axios |
+| Backend | Node.js, Express.js |
+| Database | MongoDB, Mongoose |
+| Authentication | JWT, bcrypt |
+| Image Storage | Cloudinary |
+| Data Analysis | Python, Pandas, Matplotlib |
+| Deployment | Vercel, Render |
+| Version Control | Git, GitHub |
 
-The user lands on:
+---
+
+## 🏗️ Application Architecture
 
 ```text
-http://localhost:5173
-```
-
-Home page contains:
-
-- Hero section
-- Search bar
-- Categories
-- Featured products
-- Offer banner
-
----
-
-## Step 2: Register
-
-Click:
-
-```text
-Sign Up
-```
-
-Enter:
-
-- Name
-- Email
-- Password
-
-Account is created.
-
----
-
-## Step 3: Login
-
-Click:
-
-```text
-Login
-```
-
-Enter credentials.
-
-The user gets authenticated.
-
----
-
-## Step 4: Browse Products
-
-Users can:
-
-- Search products
-- Open product details
-- View price
-- Check stock
-- Read description
-- View ratings
-
----
-
-## Step 5: Add to Cart
-
-From product page:
-
-```text
-Add to Cart
-```
-
-The product is stored in the cart.
-
----
-
-## Step 6: Add to Wishlist
-
-Click:
-
-```text
-Add to Wishlist
-```
-
-The product is saved for later.
-
----
-
-## Step 7: Manage Cart
-
-Inside cart:
-
-Users can:
-
-- Increase quantity
-- Decrease quantity
-- Remove item
-
-The total updates automatically.
-
----
-
-## Step 8: Checkout
-
-Click:
-
-```text
-Proceed to Checkout
-```
-
-Fill shipping details.
-
----
-
-## Step 9: Apply Coupon
-
-Use:
-
-```text
-WELCOME10
-```
-
-Discount gets applied.
-
----
-
-## Step 10: Select Payment Method
-
-Choose:
-
-- COD
-- UPI
-- Card
-- Net Banking
-
----
-
-## Step 11: Place Order
-
-Click:
-
-```text
-Place Order
-```
-
-Order gets created.
-
----
-
-## Step 12: Track Order
-
-Go to:
-
-```text
-My Orders
-```
-
-Track:
-
-```text
-Pending → Processing → Shipped → Delivered
+                 CUSTOMER / ADMIN
+                        |
+                        v
+              React.js Frontend
+                   (Vercel)
+                        |
+                  REST API Calls
+                        |
+                        v
+               Node.js + Express
+                   (Render)
+                        |
+          +-------------+-------------+
+          |             |             |
+          v             v             v
+       MongoDB       Cloudinary    JWT Auth
+       Atlas         Image Store   Security
+          |
+          v
+    Application Data
+          |
+          v
+    Business Analytics
+     Python / Pandas
+          |
+          v
+    Reports and Charts
 ```
 
 ---
 
-## Step 13: Review Product
-
-Users can:
-
-- Give rating
-- Write review
-
----
-
-# 🛠 How Admin Can Use This Website
-
-Login as admin.
-
-Access:
-
-```text
-/admin
-```
-
-Admin can:
-
----
-
-## Manage Products
-
-Go to:
-
-```text
-/admin/products
-```
-
-Admin can:
-
-- Add products
-- Delete products
-- Manage stock
-
----
-
-## Manage Orders
-
-Go to:
-
-```text
-/admin/orders
-```
-
-Admin can:
-
-- View all customer orders
-- Update status
-- Monitor payments
-
----
-
-## Export Reports
-
-Admin can export:
-
-```text
-/api/admin/export/sales-report
-```
-
-This exports CSV data.
-
----
-
-# 🏗 Project Structure
+## 📂 Project Structure
 
 ```text
 ShopSphere/
 │
 ├── backend/
+│   ├── config/
+│   │   └── cloudinary.js
 │   ├── controllers/
+│   ├── middleware/
+│   │   └── uploadMiddleware.js
 │   ├── models/
 │   ├── routes/
-│   ├── middleware/
 │   ├── utils/
-│   └── server.js
+│   ├── server.js
+│   └── package.json
 │
 ├── frontend/
+│   ├── public/
 │   ├── src/
 │   │   ├── components/
+│   │   ├── context/
+│   │   ├── data/
 │   │   ├── pages/
+│   │   │   └── admin/
 │   │   ├── services/
 │   │   └── App.jsx
+│   └── package.json
 │
 ├── analytics/
 │   ├── data/
 │   ├── python/
-│   ├── sql/
-│   ├── excel-reports/
-│   ├── powerbi-dashboard/
-│   └── tableau-dashboard/
+│   └── excel-reports/
 │
 ├── screenshots/
 └── README.md
@@ -623,233 +272,263 @@ ShopSphere/
 
 ---
 
-# ⚙ Developer Setup Guide
+## ⚙️ Installation and Setup
 
-## Clone Repository
+### Prerequisites
+
+- Node.js and npm.
+- MongoDB Atlas account or local MongoDB installation.
+- Cloudinary account for image uploads.
+- Git.
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/build-with-saurav/ShopSphere.git
+git clone https://github.com/Pushpendra51/ShopSphere.git
+
 cd ShopSphere
 ```
 
----
-
-# Backend Setup
-
-Go inside backend:
+### 2. Backend Setup
 
 ```bash
 cd backend
-```
 
-Install dependencies:
-
-```bash
 npm install
 ```
 
-Create `.env`
+Create a `.env` file inside the backend directory.
 
 ```env
 PORT=5000
-MONGO_URI=mongodb://127.0.0.1:27017/shopsphere
-JWT_SECRET=replace-with-a-random-secret-of-at-least-32-characters
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secure_jwt_secret
 JWT_EXPIRE=7d
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development
+
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 ```
 
-If `backend/.env` already exists, keep it and update only the values you need; do not replace it with the example file. Never commit `.env`. The backend loads this file relative to `backend/server.js`, waits for MongoDB before listening, and warns if `JWT_SECRET` is shorter than 32 characters.
+Add your actual credentials locally. Never upload the `.env` file to GitHub.
 
-Run backend:
+Start the backend:
 
 ```bash
 npm run dev
 ```
 
-Runs on:
+Backend URL:
 
-```text
-http://localhost:5000
-```
+`http://localhost:5000`
 
----
+### 3. Frontend Setup
 
-# Frontend Setup
-
-Go inside frontend:
+Open another terminal:
 
 ```bash
 cd frontend
-```
 
-Install dependencies:
-
-```bash
 npm install
-```
 
-Run frontend:
-
-```bash
 npm run dev
 ```
 
-Runs on:
+Frontend URL:
 
-```text
-http://localhost:5173
-```
+`http://localhost:5173`
 
-The frontend proxies `/api` to `http://localhost:5000` in development. To use another backend, set `VITE_API_PROXY_TARGET` in `frontend/.env`; for a deployed frontend set `VITE_API_URL` to the complete API base URL, including `/api`.
+The frontend communicates with the backend through the configured API URL or Vite development proxy.
 
-In development, the backend creates the documented `WELCOME10` coupon if it does not already exist. Existing coupons are not overwritten. Production does not receive this demo coupon automatically.
+### 4. Analytics Setup
 
-Products with missing or invalid image URLs display the bundled fallback image. Product image URLs can be supplied when products are created in the admin panel.
-
-Admin pages require a signed-in user whose database role is `admin` or `manager`. New registrations are customers by default; grant an admin role only to a trusted account using your normal database administration process.
-
-For a local demo, register the account first, then promote that account in the database selected by `MONGO_URI`, for example with `mongosh`:
-
-```javascript
-db.users.updateOne(
-  { email: "your-admin@example.com" },
-  { $set: { role: "admin" } }
-)
-```
-
----
-
-# Analytics Setup
-
-Go inside:
+Navigate to the analytics Python directory:
 
 ```bash
 cd analytics/python
 ```
 
-Install dependencies:
+Install the required libraries:
 
 ```bash
 pip install pandas matplotlib
 ```
 
-Run analytics:
+Run the analysis script:
 
 ```bash
-python3 ecommerce_analysis.py
-```
-
-Reports generated inside:
-
-```text
-analytics/excel-reports/
+python ecommerce_analysis.py
 ```
 
 ---
 
-# API Endpoints
+## 🔐 Security and Access Control
 
-## Authentication
+ShopSphere uses several security mechanisms:
 
-```text
-POST /api/auth/register
-POST /api/auth/login
-POST /api/auth/forgot-password
-PUT  /api/auth/reset-password/:token
-GET  /api/auth/profile
+- JWT-based authentication.
+- bcrypt password hashing.
+- Protected frontend routes.
+- Backend authentication middleware.
+- Role-based authorization.
+- Admin-only user management endpoints.
+- Restricted product and order management operations.
+
+New registrations receive the customer role by default. Administrative roles should only be assigned to trusted accounts through database administration.
+
+---
+
+## 🌐 Deployment
+
+ShopSphere is deployed using cloud hosting services.
+
+| Component | Platform |
+|---|---|
+| React Frontend | Vercel |
+| Node.js Backend | Render |
+| Database | MongoDB Atlas |
+| Product Images | Cloudinary |
+| Source Code | GitHub |
+
+**Live Application:** https://shop-sphere-plum.vercel.app/
+
+**Backend:** https://shopsphere-r8uw.onrender.com/
+
+The frontend communicates with the deployed backend through the `VITE_API_URL` environment variable.
+
+Example:
+
+```env
+VITE_API_URL=https://shopsphere-r8uw.onrender.com/api
 ```
 
----
-
-## Products
-
-```text
-GET    /api/products
-GET    /api/products/categories
-GET    /api/products/:id
-POST   /api/products
-PUT    /api/products/:id
-DELETE /api/products/:id
-POST   /api/products/:id/review
-```
+Backend environment variables and credentials must be configured in the Render dashboard.
 
 ---
 
-## Cart
+## 📡 API Overview
 
-```text
-POST   /api/cart
-GET    /api/cart
-PUT    /api/cart
-DELETE /api/cart/:productId
-```
+All backend API routes use the `/api` prefix.
+
+### Authentication
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/auth/register` | Register user |
+| POST | `/api/auth/login` | Login user |
+| POST | `/api/auth/forgot-password` | Request password reset |
+| PUT | `/api/auth/reset-password/:token` | Reset password |
+| GET | `/api/auth/profile` | Get user profile |
+
+### Products
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/products` | Get products |
+| GET | `/api/products/categories` | Get product categories |
+| GET | `/api/products/:id` | Get product details |
+| POST | `/api/products` | Create product |
+| PUT | `/api/products/:id` | Update product |
+| DELETE | `/api/products/:id` | Delete product |
+| POST | `/api/products/:id/review` | Submit product review |
+
+Product creation and updates support image uploads through the backend upload middleware and Cloudinary.
+
+### Cart
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/cart` | Add cart item |
+| GET | `/api/cart` | Get cart |
+| PUT | `/api/cart` | Update cart |
+| DELETE | `/api/cart/:productId` | Remove cart item |
+
+### Wishlist
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/wishlist` | Add wishlist item |
+| GET | `/api/wishlist` | Get wishlist |
+| DELETE | `/api/wishlist/:productId` | Remove wishlist item |
+
+### Orders
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/orders` | Place order |
+| GET | `/api/orders` | Get user orders |
+| GET | `/api/orders/admin` | Get all orders |
+| PUT | `/api/orders/:id/status` | Update order status |
+
+### Coupons
+
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/api/coupons/validate` | Validate coupon |
+
+### Admin User Management
+
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/api/admin/users` | Retrieve registered users |
+
+The user management endpoint requires an authenticated administrator.
 
 ---
 
-## Wishlist
+## 📸 Application Screenshots
 
-```text
-POST   /api/wishlist
-GET    /api/wishlist
-DELETE /api/wishlist/:productId
-```
+Application screenshots are available in the `screenshots/` directory.
 
----
+You can add or update the Markdown image references here using the actual filenames in that folder.
 
-## Orders
+Recommended screenshots:
 
-```text
-POST /api/orders
-GET  /api/orders
-GET  /api/orders/admin
-PUT  /api/orders/:id/status
-```
-
-`GET /api/orders/admin` and the order-status endpoint require the `admin` or `manager` role.
+- Home page.
+- Product listing.
+- Product details.
+- Shopping cart and checkout.
+- Customer profile and wishlist.
+- Admin dashboard.
+- Manage Products.
+- Manage Users.
+- Manage Orders.
 
 ---
 
-## Coupons
+## 🎓 Learning Outcomes
 
-```text
-POST /api/coupons/validate
-```
+Through this project, the following concepts were implemented:
 
----
-
-# 📸 Application Screenshots
-
-![Home](screenshots/home-page.png)
-![Products](screenshots/products-page.png)
-![Product Details](screenshots/product-details.png)
-![Cart](screenshots/cart-page.png)
-![Checkout](screenshots/checkout-page.png)
-![Coupon Applied](screenshots/checkout-coupon-applied.png)
-![Wishlist](screenshots/wishlist-page.png)
-![Profile](screenshots/profile-page.png)
-![Admin Dashboard](screenshots/admin-dashboard.png)
-![Admin Products](screenshots/admin-products.png)
-![Admin Orders](screenshots/admin-orders.png)
-![Login](screenshots/login-page.png)
-![Register](screenshots/register-page.png)
-![Forgot Password](screenshots/forgot-password-page.png)
+- Full-stack web application development.
+- REST API development.
+- MongoDB database integration.
+- Authentication and authorization.
+- CRUD operations.
+- Cloud-based image storage.
+- Frontend and backend integration.
+- Data analysis and visualization.
+- Application deployment.
+- Version control using Git and GitHub.
 
 ---
 
-# 🎤 Interview Explanation
+## 👨‍💻 Author
 
-ShopSphere is a full-stack e-commerce platform integrated with business analytics.  
-It supports customer shopping workflows, admin product/order management, coupon systems, payment workflows, and analytics using Kaggle datasets.  
-The project combines software engineering and business intelligence, making it useful for Full Stack, Data Analyst, and Business Analyst roles.
+**Pushpendra**
+
+B.Tech – Computer Science and Engineering
+
+Lovely Professional University
+
+GitHub: https://github.com/Pushpendra51
+
+Portfolio: https://pushpendraportfolio.vercel.app/
 
 ---
 
-# 👨‍💻 Author
+## 📄 License
 
-**Saurav Kumar Singh**  
-B.Tech Computer Science and Engineering  
-National Institute of Technology Calicut
-
-GitHub:
-https://github.com/build-with-saurav
+This project is developed for educational and portfolio purposes.
