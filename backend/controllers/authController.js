@@ -60,6 +60,10 @@ exports.loginUser = async (req, res) => {
       });
     }
 
+    // Update last successful login time
+    user.lastLoginAt = new Date();
+    await user.save();
+
     const token = generateToken(user._id, user.role);
 
     res.status(200).json({

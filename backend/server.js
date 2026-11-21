@@ -18,6 +18,7 @@ const couponRoutes = require("./routes/couponRoutes");
 const recentlyViewedRoutes = require("./routes/recentlyViewedRoutes");
 const recommendationRoutes = require("./routes/recommendationRoutes");
 const exportRoutes = require("./routes/exportRoutes");
+const adminUserRoutes = require("./routes/adminUserRoutes");
 
 const app = express();
 
@@ -26,9 +27,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 
+
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5175",
+  "https://shop-sphere-plum.vercel.app",
+];
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
@@ -43,6 +51,7 @@ app.use("/api/coupons", couponRoutes);
 app.use("/api/recently-viewed", recentlyViewedRoutes);
 app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/admin/export", exportRoutes);
+app.use("/api/admin/users", adminUserRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({

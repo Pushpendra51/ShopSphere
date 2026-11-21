@@ -1,9 +1,42 @@
+
 const Product = require("../models/Product");
 const mongoose = require("mongoose");
+const cloudinary = require("../config/cloudinary");
 
+// Upload image to Cloudinary
+const uploadToCloudinary = (file) => {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: "shopsphere/products",
+        resource_type: "image",
+      },
+      (error, result) => {
+        if (error) return reject(error);
+
+        resolve({
+          url: result.secure_url,
+          public_id: result.public_id,
+        });
+      }
+    );
+
+    stream.end(file.buffer);
+  });
+};
+
+// CREATE PRODUCT
 exports.createProduct = async (req, res) => {
   try {
-    const product = await Product.create(req.body);
+    const productData = { ...req.body };
+
+    // Upload image if provided
+    if (req.file) {
+      const uploadedImage = await uploadToCloudinary(req.file);
+      productData.images = [uploadedImage];
+    }
+
+    const product = await Product.create(productData);
 
     res.status(201).json({
       success: true,
@@ -18,6 +51,7 @@ exports.createProduct = async (req, res) => {
   }
 };
 
+// GET ALL PRODUCTS
 exports.getProducts = async (req, res) => {
   try {
     const { search, category, minPrice, maxPrice, sort } = req.query;
@@ -25,7 +59,11 @@ exports.getProducts = async (req, res) => {
     let query = {};
 
     if (search) {
-      const escapedSearch = String(search).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const escapedSearch = String(search).replace(
+        /[.*+?^${}()|[\]\\]/g,
+        "\\$&"
+      );
+
       query.$or = [
         { name: { $regex: escapedSearch, $options: "i" } },
         { description: { $regex: escapedSearch, $options: "i" } },
@@ -40,10 +78,19 @@ exports.getProducts = async (req, res) => {
 
     if (minPrice !== undefined || maxPrice !== undefined) {
       query.price = {};
-      if (minPrice !== undefined) query.price.$gte = Number(minPrice);
-      if (maxPrice !== undefined) query.price.$lte = Number(maxPrice);
+
+      if (minPrice !== undefined) {
+        query.price.$gte = Number(minPrice);
+      }
+
+      if (maxPrice !== undefined) {
+        query.price.$lte = Number(maxPrice);
+      }
+
       if (
-        Object.values(query.price).some((value) => !Number.isFinite(value)) ||
+        Object.values(query.price).some(
+          (value) => !Number.isFinite(value)
+        ) ||
         (query.price.$gte !== undefined &&
           query.price.$lte !== undefined &&
           query.price.$gte > query.price.$lte)
@@ -78,10 +125,14 @@ exports.getProducts = async (req, res) => {
   }
 };
 
+// GET PRODUCT CATEGORIES
 exports.getProductCategories = async (req, res) => {
   try {
     const categories = (await Product.distinct("category"))
-      .filter((category) => typeof category === "string" && category.trim())
+      .filter(
+        (category) =>
+          typeof category === "string" && category.trim()
+      )
       .sort((left, right) => left.localeCompare(right));
 
     res.status(200).json({
@@ -96,6 +147,7 @@ exports.getProductCategories = async (req, res) => {
   }
 };
 
+// GET SINGLE PRODUCT
 exports.getProductById = async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) {
@@ -126,6 +178,7 @@ exports.getProductById = async (req, res) => {
   }
 };
 
+// ADD PRODUCT REVIEW
 exports.addProductReview = async (req, res) => {
   try {
     const { rating, comment } = req.body;
@@ -147,7 +200,8 @@ exports.addProductReview = async (req, res) => {
     ) {
       return res.status(400).json({
         success: false,
-        message: "A rating from 1 to 5 and a review comment are required",
+        message:
+          "A rating from 1 to 5 and a review comment are required",
       });
     }
 
@@ -161,7 +215,8 @@ exports.addProductReview = async (req, res) => {
     }
 
     const alreadyReviewed = product.reviews.find(
-      (review) => review.user.toString() === req.user._id.toString()
+      (review) =>
+        review.user.toString() === req.user._id.toString()
     );
 
     if (alreadyReviewed) {
@@ -182,8 +237,10 @@ exports.addProductReview = async (req, res) => {
     product.numReviews = product.reviews.length;
 
     product.rating =
-      product.reviews.reduce((sum, item) => item.rating + sum, 0) /
-      product.reviews.length;
+      product.reviews.reduce(
+        (sum, item) => item.rating + sum,
+        0
+      ) / product.reviews.length;
 
     await product.save();
 
@@ -200,7 +257,7 @@ exports.addProductReview = async (req, res) => {
   }
 };
 
-
+// UPDATE PRODUCT
 exports.updateProduct = async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) {
@@ -210,18 +267,32 @@ exports.updateProduct = async (req, res) => {
       });
     }
 
-    const product = await Product.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
+    // Check product before uploading a replacement image
+    const existingProduct = await Product.findById(req.params.id);
 
-    if (!product) {
+    if (!existingProduct) {
       return res.status(404).json({
         success: false,
         message: "Product not found",
       });
     }
+
+    const updateData = { ...req.body };
+
+    // Upload replacement image only when provided
+    if (req.file) {
+      const uploadedImage = await uploadToCloudinary(req.file);
+      updateData.images = [uploadedImage];
+    }
+
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     res.status(200).json({
       success: true,
@@ -236,6 +307,7 @@ exports.updateProduct = async (req, res) => {
   }
 };
 
+// DELETE PRODUCT
 exports.deleteProduct = async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) {
@@ -266,6 +338,7 @@ exports.deleteProduct = async (req, res) => {
   }
 };
 
+// GET SEARCH SUGGESTIONS
 exports.getSearchSuggestions = async (req, res) => {
   try {
     const { keyword } = req.query;
@@ -277,7 +350,11 @@ exports.getSearchSuggestions = async (req, res) => {
       });
     }
 
-    const escapedKeyword = String(keyword).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const escapedKeyword = String(keyword).replace(
+      /[.*+?^${}()|[\]\\]/g,
+      "\\$&"
+    );
+
     const products = await Product.find({
       name: { $regex: escapedKeyword, $options: "i" },
     })
@@ -296,18 +373,25 @@ exports.getSearchSuggestions = async (req, res) => {
   }
 };
 
+// COMPARE PRODUCTS
 exports.compareProducts = async (req, res) => {
   try {
     const { ids } = req.body;
 
-    if (!ids || !Array.isArray(ids) || ids.length < 2) {
+    if (
+      !Array.isArray(ids) ||
+      ids.length < 2 ||
+      !ids.every((id) => mongoose.isValidObjectId(id))
+    ) {
       return res.status(400).json({
         success: false,
-        message: "Please provide at least two product IDs",
+        message: "Please provide at least two valid product IDs",
       });
     }
 
-    const products = await Product.find({ _id: { $in: ids } });
+    const products = await Product.find({
+      _id: { $in: ids },
+    });
 
     res.status(200).json({
       success: true,

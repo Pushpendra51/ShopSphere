@@ -1,3 +1,4 @@
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import API from "../../services/api";
@@ -8,6 +9,7 @@ function AdminDashboard() {
 
   useEffect(() => {
     let active = true;
+
     API.get("/admin/analytics")
       .then(({ data }) => {
         if (active) setAnalytics(data.analytics);
@@ -26,6 +28,7 @@ function AdminDashboard() {
       const { data } = await API.get("/admin/export/sales-report", {
         responseType: "blob",
       });
+
       const url = URL.createObjectURL(data);
       const link = document.createElement("a");
       link.href = url;
@@ -43,7 +46,12 @@ function AdminDashboard() {
     <div className="min-h-screen bg-slate-50 p-8">
       <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 
-      {error && <p role="alert" className="mb-6 text-red-600">{error}</p>}
+      {error && (
+        <p role="alert" className="mb-6 text-red-600">
+          {error}
+        </p>
+      )}
+
       {analytics && (
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
@@ -60,19 +68,35 @@ function AdminDashboard() {
         </div>
       )}
 
-      <div className="grid md:grid-cols-3 gap-6">
-        <Link to="/admin/products" className="bg-white p-6 rounded-xl shadow">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Link
+          to="/admin/products"
+          className="bg-white p-6 rounded-xl shadow hover:shadow-md transition"
+        >
           <h2 className="text-xl font-bold">Manage Products</h2>
         </Link>
 
-        <Link to="/admin/orders" className="bg-white p-6 rounded-xl shadow">
+        <Link
+          to="/admin/orders"
+          className="bg-white p-6 rounded-xl shadow hover:shadow-md transition"
+        >
           <h2 className="text-xl font-bold">Manage Orders</h2>
+        </Link>
+
+        <Link
+          to="/admin/users"
+          className="bg-white p-6 rounded-xl shadow hover:shadow-md transition"
+        >
+          <h2 className="text-xl font-bold">Manage Users</h2>
+          <p className="text-sm text-slate-500 mt-2">
+            View registered users and their login activity.
+          </p>
         </Link>
 
         <button
           type="button"
           onClick={exportReport}
-          className="bg-white p-6 rounded-xl shadow"
+          className="bg-white p-6 rounded-xl shadow hover:shadow-md transition text-left"
         >
           <h2 className="text-xl font-bold">Export CSV</h2>
         </button>

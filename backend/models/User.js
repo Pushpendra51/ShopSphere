@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema(
     },
     phone: String,
     addresses: [addressSchema],
+    lastLoginAt: {
+      type: Date,
+      default: null,
+    },
     
     resetPasswordToken: String,
     resetPasswordExpire: Date,
