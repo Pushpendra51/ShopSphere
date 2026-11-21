@@ -33,6 +33,7 @@ const allowedOrigins = [
   "http://localhost:5174",
   "http://localhost:5175",
   "https://shop-sphere-plum.vercel.app",
+  "https://shopsphere-mart.vercel.app",
 ];
 app.use(
   cors({
